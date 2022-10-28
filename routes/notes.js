@@ -1,6 +1,6 @@
 const notes = require('express').Router();
 const { v4: uuidv4 } = require('uuid');
-const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
+const { readAndAppend, readFromFile, writeToFile } = require('../helpers/fsUtils');
 // above is modules from npm.  uuid is for the auto special id for notes.  Needed for delte if can get to work.
 
 // gets notes from db.json
@@ -18,7 +18,7 @@ notes.post('/', (req, res) => {
     const newNote = {
       title,
       text,
-      note_id: uuidv4(),
+      id: uuidv4(),
     };
 
     readAndAppend(newNote, './db/db.json');
@@ -29,13 +29,15 @@ notes.post('/', (req, res) => {
 });
 
 // Doesn't work yet?  Supposed to be for deleting notes.  
-notes.delete('/:note_id', (req, res) => {
-  const noteId = req.params.note_id;
+notes.delete('/:id', (req, res) => {
+  const noteId = req.params.id;
   readFromFile('./db/db.json')
     .then((data) => JSON.parse(data))
     .then((json) => {
-      // Make a new array of all tips except the one with the ID provided in the URL
-      const result = json.filter((tip) => tip.note_id !== noteId);
+      // Make a new array of all notes except the one with the ID provided in the URL
+      const result = json.filter((note) => note.id !== noteId);
+      console.log(result)
+      console.log(noteId)
 
       // Save that array to the filesystem
       writeToFile('./db/db.json', result);

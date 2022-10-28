@@ -1,6 +1,3 @@
-const express = require('express');
-const fs = require('fs')
-
 let noteTitle;
 let noteText;
 let saveNoteBtn;
@@ -37,11 +34,6 @@ const getNotes = () =>
       'Content-Type': 'application/json',
     },
   })
-  .then((response) => response.json())
-  .then((data) => data)
-  .catch((error) => {
-    console.error('Error:', error);
-  });
 
 
 // Post a new note to the page
@@ -53,17 +45,8 @@ const saveNote = (note) =>
     },
     body: JSON.stringify(note),
   })
-  .then((response) => response.json())
-  .then((data) => {
-    alert(data);
-    createCard(note);
-  })
-  .catch((error) => {
-    console.error('Error:', error);
-  });
 
-// When the page loads, get all the notes
-  getTips().then((data) => data.forEach((note) => createCard(note)));
+
 
   // DOES NOT WORK YET
 const deleteNote = (id) =>
@@ -73,11 +56,6 @@ const deleteNote = (id) =>
       'Content-Type': 'application/json',
     },
   })
-  .then((response) => response.json())
-  .then((data) => data)
-  .catch((error) => {
-    console.error('Error:', error);
-  });
 
 
 const renderActiveNote = () => {
@@ -106,7 +84,7 @@ const handleNoteSave = () => {
     renderActiveNote();
   });
 };
-
+deleteNote
 // Delete the clicked note
 const handleNoteDelete = (e) => {
   // Prevents the click listener for the list from being called when the button inside of it is clicked

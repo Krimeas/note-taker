@@ -1,14 +1,7 @@
 [
     {
-        "title": "Test Title",
-        "text": "Test text"
-    },
-    {
-        "note_id": "625194b8-2f54-4a99-adf4-8f6c2082acf9"
-    },
-    {
         "title": "Squirrel Please",
-        "text": "17 acorns",
-        "note_id": "ec187feb-05ba-4dd1-9822-ed56027107dd"
+        "text": "Catt not as good as Doge",
+        "id": "df4aebe6-8aa1-40d9-a07c-5d156397649c"
     }
 ]
