@@ -28,7 +28,7 @@ notes.post('/', (req, res) => {
   }
 });
 
-// Doesn't work yet?  Supposed to be for deleting notes.  
+// Seeks out note by id assigned at random when generated, filters through entire array and removes only that note then reapplies the array.
 notes.delete('/:id', (req, res) => {
   const noteId = req.params.id;
   readFromFile('./db/db.json')

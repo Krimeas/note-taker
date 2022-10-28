@@ -48,7 +48,7 @@ const saveNote = (note) =>
 
 
 
-  // DOES NOT WORK YET
+  // Deletes the saved Notes by grabbing specific id from the note.
 const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {
     method: 'DELETE',
@@ -58,6 +58,7 @@ const deleteNote = (id) =>
   })
 
 
+// 
 const renderActiveNote = () => {
   hide(saveNoteBtn);
 
